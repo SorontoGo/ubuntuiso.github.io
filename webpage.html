@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubuntu Desktop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #dd4814 0%, #77216f 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>');
+            background-size: 120px 120px;
+            opacity: 0.3;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Download Button */
+        .download-btn {
+            display: inline-block;
+            background: #fff;
+            color: #dd4814;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            background: #f8f8f8;
+        }
+
+        /* Divider */
+        .divider {
+            height: 4px;
+            background: linear-gradient(90deg, #dd4814, #5e2750, #2c001e);
+            margin: 60px 0;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 80px 0;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            color: #dd4814;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .content-section h3 {
+            font-size: 1.8rem;
+            color: #5e2750;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        /* Feature Card */
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .feature-header {
+            background: #f8f8f8;
+            padding: 30px;
+            flex: 1;
+            min-width: 300px;
+            border-right: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-content {
+            padding: 30px;
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .feature-header h4 {
+            font-size: 1.5rem;
+            color: #dd4814;
+            margin-bottom: 15px;
+        }
+
+        .feature-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c001e;
+            color: white;
+            padding: 40px 0 30px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .copyright {
+            font-size: 1rem;
+        }
+
+        /* Footer Documentation Button */
+.footer-doc-btn {
+    display: inline-flex;
+    align-items: center;
+    background: #2c001e; /* Новый цвет */
+    color: #2c001e;
+    padding: 10px 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    gap: 8px;
+}
+
+.footer-doc-btn:hover {
+    background: #3d0029; /* Темнее при наведении */
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .feature-header {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Ubuntu for desktops</h1>
+            <p>The number 1 open source operating system powers millions of PCs and laptops around the world.</p>
+            <a href="#" id="downloadButton" class="download-btn">Download Ubuntu Desktop</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="divider"></div>
+    </div>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Ubuntu 24.04 LTS</h2>
+            <h3>The secure, modern operating system used by millions</h3>
+            
+            <div class="feature-card">
+                <div class="feature-header">
+                    <div>
+                        <h4>The preferred choice for professional developers</h4>
+                    </div>
+                </div>
+                <div class="feature-content">
+                    <p>Each release of Ubuntu delivers the latest applications, libraries and toolchains. Ubuntu is a primary platform for all major IDEs, game development tools and AI/ML software.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                © 2025 Canonical Ltd. Ubuntu and Canonical are registered trademarks.
+            </div>
+            <a href="#" id="footerDocButton" class="footer-doc-btn">
+                <i class="fas fa-file-word"></i> Документация
+            </a>
+        </div>
+    </footer>
+
+    <!-- Font Awesome для иконки Word -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Функция для скачивания файла
+        function downloadFile(url, filename) {
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Скачивание Ubuntu
+        document.getElementById('downloadButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            downloadFile(
+                'https://releases.ubuntu.com/24.04/ubuntu-24.04-desktop-amd64.iso', 
+                'ubuntu-24.04-desktop.iso'
+            );
+        });
+
+        // Скачивание документации (кнопка в футере)
+        document.getElementById('footerDocButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            const docUrl = 'path/to/your/ubuntu_documentation.docx';
+            downloadFile(docUrl, 'Ubuntu_Документация.docx');
+            alert('Документация скачивается. Если загрузка не началась, проверьте доступность файла.');
+        });
+    </script>
+</body>
+</html>
