@@ -15,8 +15,8 @@ lsmod (список загруженных ядер)
 
 3) Создание групп и пользователей
 Создание группы - sudo groupadd developers
-Создание пользователя - sudo groupadd developers
-Установка ему пароля - sudo groupadd developers
+Создание пользователя - sudo useradd -m -G developers dev_user
+Установка ему пароля - sudo passwd dev_user
 Настройка прав (пример: доступ к каталогу /opt)
 sudo chown -R :develop /opt
 sudo chmod 775 /opt
