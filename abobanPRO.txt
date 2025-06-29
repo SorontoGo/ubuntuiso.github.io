@@ -1,0 +1,123 @@
+1) Обновление системы и пакетов на машине
+apt update - обновление пакетов
+apt upgrade - установка обновлений
+sudo ubuntu-drivers autoinstall - установка драйверов
+
+После установки выполнить команду
+reboot - выполнить перезапуск системы
+
+Если не установился пакет программ libre:
+sudo apt install libreoffice
+
+2) специальные утилиты для настройки ядра
+systemctl
+lsmod (список загруженных ядер)
+
+3) Создание групп и пользователей
+Создание группы - sudo groupadd developers
+Создание пользователя - sudo groupadd developers
+Установка ему пароля - sudo groupadd developers
+Настройка прав (пример: доступ к каталогу /opt)
+sudo chown -R :develop /opt
+sudo chmod 775 /opt
+
+4) Резервное копирование и точки восстановления системы
+Установка инструмента для резервного копирования - sudo apt install timeshift -y
+Резервное копирование - sudo timeshift --create --comments "Backup"
+Создание точек восстановления - sudo timeshift --schedule --weekly --count 3
+При возникновении ошибок необходимо лезть в кфг-файл (долго)
+
+5) Установка snap
+sudo apt install snap
+
+6) Установка виртуального принтера
+apt install cups-pdf -y
+
+7) Настройка ssh (через putty)
+Установка (если необходима): sudo apt install openssh-server
+Настройка проброса портов... порт хоста - 2222, порт гостя - 22
+
+systemctl status ssh
+
+systemctl restart ssh
+
+sudo systemctl enable --now ssh
+
+Скачиваем putty.exe на windows и запускаем
+
+Альтернатива для консоли в виндоус ( выполнить команду: ssh student@127.0.0.1 -p 2222)
+
+8) Установка архиватора
+sudo apt install 7zip -y
+
+9) Установка программ для графики
+GIMP - sudo apt install gimp -y
+inkscape - sudo apt install inkscape -y
+FreeCad - snap install freecad
+Blender - sudo apt install blender -y
+
+10) Установка антивируса
+apt install clamav clamav-daemon clamtk
+
+11) Установка среды разработки
+sudo apt install software-properties-common apt-transport-https wget
+установка транспортных протоколов для пакетного репозитория apt.
+
+sudo wget -q https://packages.microsoft.com/keys/microsoft.asc -O /etc/apt/trusted.gpg.d/microsoft.asc 
+
+скачиваем пакетные ключи и добавляем их к репозиторию.
+
+echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/microsoft.asc] https://packages.microsoft.com/ubuntu/$(lsb_release -rs)/prod $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/microsoft.list
+добавления репозитория к пакетному менеджеру
+
+apt update
+обновление список пакетов в репозитории.
+
+snap install code --classic
+
+12) Установка Android studio
+snap install android-studio --classic
+
+13) Утилиты для мониторинга и диагностики аппаратного обеспечения
+sudo apt install inxi
+
+14) Настройка и установка Xrdp
+apt install xrdp
+Установка удаленного рабочего стола.
+systemctl status xrdp -проверка работы удаленного стола.
+
+Настройка удаленного стола:
+nano /etc/xrdp/startwm.sh  - открываем файл конфигурации
+
+Туда перед if вставляем на отдельную строку
+
+export DESKTOP_SESSION=ubuntu
+export GNOME_SHELL_SESSION_MODE=ubuntu
+export XDG_CURRENT_DESKTOP=ubuntu:GNOME
+
+Сохраняем изменения через Ctrl + O
+Выходим Ctrl + X
+
+systemctl restart xrdp - перезапускаем сервис.
+Далее смотрим его статус через команду systemctl status xrdp, статус должен быть Active (зеленый)
+
+15) Установка Базы данных PostgreSql
+apt install postgresql
+Установка Базы данных postgresql
+
+Проверка запуска службы:
+systemctl status postgresql.service - проверка статус
+если статус inactive для сервиса базы данных, то сделать systemctl start postgresql.service
+
+su - postgres - переход в пользователя postgres для проверки работы базы данных.
+
+
+Переход в оболочку sql запросов.
+psql
+
+\l - показывает список всех Баз данных которые у нас есть
+\du - показывает список всех пользователей Базы данных
+
+\quit - выйти из Базы данных.
+
+После выхода из Базы данных мы остаемся в пользователе postgres, выйти из него Ctrl + D
